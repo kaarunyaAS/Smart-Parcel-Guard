@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Smart Parcel Guard</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+    <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+    <section id="login-view" class="login-view">
+        <form id="login-form" class="login-card">
+            <p class="eyebrow">Smart Parcel Guard</p>
+            <h1>Security console</h1>
+            <p class="muted">Sign in with your operator or administrator account.</p>
+            <label>Username or email<input name="username" autocomplete="username" required></label>
+            <label>Password<input name="password" type="password" autocomplete="current-password" required></label>
+            <p id="login-error" class="error" hidden></p>
+            <button type="submit">Sign in</button>
+        </form>
+    </section>
+
+    <div id="app" class="app" hidden>
+        <aside class="nav">
+            <div class="brand">Smart Parcel Guard</div>
+            <button data-view="dashboard">Dashboard</button>
+            <button data-view="parcels">Parcels</button>
+            <button data-view="register" data-admin>Register parcel</button>
+            <button data-view="alerts">Alerts</button>
+            <button data-view="devices" data-admin>Devices</button>
+            <button data-view="users" data-admin>Users</button>
+            <button data-view="risk-settings" data-admin>Risk settings</button>
+            <button id="logout" class="ghost">Log out</button>
+        </aside>
+        <main>
+            <header class="topbar">
+                <div>
+                    <p id="role-label" class="eyebrow"></p>
+                    <h1 id="view-title">Dashboard</h1>
+                </div>
+                <p id="live-state" class="pill">Live updates off</p>
+            </header>
+            <p id="page-error" class="error" hidden></p>
+            <p id="page-loading" class="muted" hidden>Loading…</p>
+
+            <section id="view-dashboard" class="view" hidden>
+                <div id="stats" class="stats"></div>
+                <div class="split">
+                    <article><h2>Recent alerts</h2><div id="dash-alerts"></div></article>
+                    <article><h2>Recent activity</h2><div id="dash-activity"></div></article>
+                </div>
+                <article><h2>Risk distribution</h2><div id="risk-bars"></div></article>
+            </section>
+
+            <section id="view-parcels" class="view" hidden>
+                <div class="toolbar">
+                    <input id="parcel-query" placeholder="Search parcels">
+                    <button id="parcel-search" type="button">Search</button>
+                </div>
+                <div id="parcel-list"></div>
+            </section>
+
+            <section id="view-register" class="view" hidden>
+                <form id="parcel-form" class="form-grid"></form>
+            </section>
+
+            <section id="view-detail" class="view" hidden>
+                <button id="back-parcels" type="button" class="ghost">Back to parcels</button>
+                <div id="detail-summary" class="stats"></div>
+                <form id="parcel-status-form" class="inline-form" hidden>
+                    <label>Status<select name="status" required></select></label>
+                    <label>Note<input name="note" maxlength="500" placeholder="Optional status update note"></label>
+                    <button type="submit">Update status</button>
+                </form>
+                <div class="split">
+                    <article><h2>GPS</h2><div id="map"></div><p id="map-empty" class="muted"></p></article>
+                    <article><h2>Sensors</h2><canvas id="sensor-chart" height="180"></canvas><p id="sensor-empty" class="muted"></p></article>
+                </div>
+                <div class="split">
+                    <article><h2>Evidence</h2><div id="evidence" class="gallery"></div></article>
+                    <article><h2>Timeline</h2><div id="timeline"></div></article>
+                </div>
+            </section>
+
+            <section id="view-alerts" class="view" hidden>
+                <div id="alert-list"></div>
+            </section>
+
+            <section id="view-devices" class="view" hidden>
+                <form id="device-form" class="inline-form">
+                    <input name="firmwareVersion" placeholder="Firmware version">
+                    <button type="submit">Register device</button>
+                </form>
+                <p id="device-token" class="token" hidden></p>
+                <div id="device-list"></div>
+            </section>
+
+            <section id="view-users" class="view" hidden>
+                <form id="user-form" class="form-grid"></form>
+                <div id="user-list"></div>
+            </section>
+
+            <section id="view-risk-settings" class="view" hidden>
+                <p class="muted">Update scoring weights, severity thresholds, telemetry limits, and event correlation windows.</p>
+                <form id="risk-settings-form" class="form-grid"></form>
+            </section>
+        </main>
+    </div>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

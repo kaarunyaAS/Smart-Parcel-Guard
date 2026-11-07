@@ -1,0 +1,12 @@
+package com.smartparcelguard.alert;
+
+public enum AlertType {
+    UNAUTHORIZED_OPENING,
+    STRONG_IMPACT,
+    REPEATED_VIBRATION,
+    ROUTE_DEVIATION,
+    UNEXPECTED_MOVEMENT,
+    DEVICE_OFFLINE,
+    LOW_BATTERY,
+    MULTIPLE_SUSPICIOUS_EVENTS
+}

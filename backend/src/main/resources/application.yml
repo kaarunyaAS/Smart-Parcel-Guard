@@ -1,0 +1,58 @@
+spring:
+  application:
+    name: smart-parcel-guard
+  profiles:
+    active: dev
+  datasource:
+    url: jdbc:mysql://localhost:3306/smart_parcel_guard?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Kolkata&characterEncoding=utf8
+    username: ${SPG_DB_USERNAME:spg_app}
+    password: ${SPG_DB_PASSWORD}
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate.jdbc.time_zone: Asia/Kolkata
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+  servlet:
+    multipart:
+      max-file-size: 8MB
+      max-request-size: 10MB
+  web:
+    resources:
+      static-locations: classpath:/static/,file:frontend/,file:../frontend/
+
+server:
+  port: 8080
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+
+springdoc:
+  swagger-ui:
+    persistAuthorization: true
+
+spg:
+  simulation:
+    enabled: false
+  storage:
+    image-dir: ../storage/images
+  device:
+    offline-after-seconds: 180
+  jwt:
+    secret: ${SPG_JWT_SECRET}
+    expiration-minutes: ${SPG_JWT_EXPIRATION_MINUTES:120}
+
+---
+spring:
+  config:
+    activate:
+      on-profile: sim
+spg:
+  simulation:
+    enabled: true

@@ -1,0 +1,17 @@
+com\smartparcelguard\realtime\LiveUpdateHandshakeTest$WebSocketListener.class
+com\smartparcelguard\risk\RiskScoreCalculatorTest.class
+com\smartparcelguard\Phase4ApiTest.class
+com\smartparcelguard\realtime\LiveUpdateBrokerTest.class
+com\smartparcelguard\auth\AuthRegistrationValidationTest.class
+com\smartparcelguard\telemetry\DeviceAuthenticationServiceTest.class
+com\smartparcelguard\risk\RiskRecalculationSchedulerTest.class
+com\smartparcelguard\user\UserServiceTest.class
+com\smartparcelguard\realtime\LiveUpdateHandshakeTest.class
+com\smartparcelguard\Phase2CrudApiTest.class
+com\smartparcelguard\telemetry\TelemetryRulesTest.class
+com\smartparcelguard\security\SecurityCorsTest.class
+com\smartparcelguard\telemetry\SensorEventDetectorTest.class
+com\smartparcelguard\Phase3ApiTest.class
+com\smartparcelguard\parcel\ParcelStatusRulesTest.class
+com\smartparcelguard\Phase2ApiTest.class
+com\smartparcelguard\security\JwtServiceTest.class
